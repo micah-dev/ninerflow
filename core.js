@@ -1,8 +1,8 @@
 /**
  * Libraries/Imports
  */
+const { Client, Intents, Collection } = require('discord.js');
 const fs = require('fs') //reading file system
-const Discord = require('discord.js') // discord wrapper
 /**
  * Local imports
  */
@@ -50,7 +50,7 @@ const startUp = async () => {
  */
 function loadCommands() {
     bot.commandFile = (fs.readdirSync(`./commands`).filter(file => file.endsWith('.js')))
-    bot.commands = new Discord.Collection()
+    bot.commands = new Collection()
 
     q = ''
     bot.commandFile.forEach(file => {
@@ -68,7 +68,7 @@ function loadCommands() {
 /**
  * Main
  */
-var bot = new Discord.Client()
+var bot = new Client({ intents: [Intents.FLAGS.GUILDS] });
 loadCommands()
 bot.once('ready', () => startUp())
 bot.on('message', msg => commandHandler(msg))

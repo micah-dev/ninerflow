@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "discord.js": "^13.2.0",
     "openai": "^0.0.8",
     "openai-api-node": "^1.0.0",
     "puppeteer": "^9.0.0"

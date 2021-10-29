@@ -113,7 +113,7 @@ class MyClient(discord.Client):
 
 
 client = MyClient()
-client.run('ODk1NDQwMzA4NTk3MzEzNTc3.YV4lxg.o0s4KS9kTGFVBHJLEEewcgAZjPg')
+client.run(os.getenv('DISCORD_BOT_CLIENT_TOKEN'))
 
 
 

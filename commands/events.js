@@ -88,6 +88,7 @@ module.exports = {
             .attachFiles(attachment)
             .setImage(`attachment://${tempFile}`)
             .setTimestamp()
+            .setThumbnail(url=logo)
         page.close();
 
         await msg.channel.send(reply)

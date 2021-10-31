@@ -3,5 +3,8 @@
     "openai": "^0.0.8",
     "openai-api-node": "^1.0.0",
     "puppeteer": "^9.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.16.2"
   }
 }

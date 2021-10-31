@@ -18,11 +18,15 @@ const secrets = require('./secrets.json')
  *      Try to execute the command
  *          Send Error to console & reply with error to channel
  */
-let commandHandler = async (msg) => {
-    const args = msg.content.toLowerCase().trim().split(' ')
+const commandHandler = async (msg) => {
+    let args = msg.content.toLowerCase().trim().split(' ')
+    args[0] = args[0].replace('!', '')
+    if (!msg.content.startsWith('!')) return
+    console.log("1")
     if (msg.author.bot) return
+    console.log("2")
     if (!bot.commands.has(args[0])) return
-
+    console.log("3")
     try {
         bot.commands.get(args[0]).execute(msg, args, bot)
         console.log(`Exec: ${msg.content} success!`)
@@ -48,10 +52,9 @@ const startUp = async () => {
  *              Log to console
  *          Print the total number of commands loaded
  */
-function loadCommands() {
+const loadCommands = () => {
     bot.commandFile = (fs.readdirSync(`./commands`).filter(file => file.endsWith('.js')))
     bot.commands = new Discord.Collection()
-
     q = ''
     bot.commandFile.forEach(file => {
         try {

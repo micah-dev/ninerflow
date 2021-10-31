@@ -12,8 +12,8 @@ const tempPath = `./commands/temp/${tempFile}`
 const lookupURL = 'https://pats.charlotte.edu'
 const logo = 'https://media.discordapp.net/attachments/886347148386529291/894761080348368966/bot_logo-white_on_transparent-06.png?width=850&height=858'
 
- // Selector Path
- // body > root > app-root
+// Selector Path
+// body > root > app-root
 
 /**
  * Command Parameters/Initialization 
@@ -36,34 +36,29 @@ module.exports = {
          *   copy>
          *   Selector Path>
          */
-        const browser = await puppeteer.launch({headless: false})
+        const browser = await puppeteer.launch({ headless: false})
         const page = await browser.newPage()
-
-        // stolen from interwebs, didnt work
-        await page.goto(lookupURL);
-
-        //await delay(5000)
-        //await page.waitForSelector('#body > root > app-root', { visible: true}); 
-        await delay(500);
-        //const element = await page.$('#two-col-left');
-        //await element.screenshot({path: tempPath})
-
-        // hmnn
-        await page.screenshot({path: tempPath});
+        await page.goto(lookupURL, {
+            waitUntil: 'networkidle2',
+            timeout: 30000,
+        })
+        await delay(777)
+        const element = await page.$('#block-block-55 > div > div');
+        await element.screenshot({ path: tempPath })
 
         /**
          * Using the discord library to make embedded message to send back
          */
         const attachment = new Discord
             .MessageAttachment(tempPath, tempFile);
-        
+
         const reply = new Discord.MessageEmbed()
             .setColor('#008080')
             .setTitle(`parking 🚗`)
             .attachFiles(attachment)
             .setImage(`attachment://${tempFile}`)
             .setDescription(`[View on Web](${lookupURL})`)
-            .setThumbnail(url=logo)
+            .setThumbnail(url = logo)
             .setTimestamp()
         page.close();
         await msg.channel.send(reply)

@@ -37,7 +37,7 @@
          const page = await browser.newPage()
          await page.goto(lookupURL)
          const element = await page.$('#rso > div:nth-child(2)'); 
-         delay(500);
+         delay(500)
          await element.screenshot({path: tempPath})
          /**
          * Using the discord library to make embedded message to send back

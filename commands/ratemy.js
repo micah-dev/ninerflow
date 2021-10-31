@@ -39,8 +39,7 @@
          const page = await browser.newPage()
          await page.goto(newURL)
          await page.click('body > div:nth-child(13) > div > div > button')//cookies pop up
-         const element = await page.$('#root > div > div > div.SearchResultsPage__StyledSearchResultsPage-sc-1srop1v-0.kdXwyM > div.SearchResultsPage__SearchResultsWrapper-sc-1srop1v-1.gsOeEv'); 
-         delay(500);
+         const element = await page.$('#root > div > div > div.SearchResultsPage__StyledSearchResultsPage-sc-1srop1v-0.kdXwyM > div.SearchResultsPage__SearchResultsWrapper-sc-1srop1v-1.gsOeEv');
          await element.screenshot({path: tempPath})
          /**
          * Using the discord library to make embedded message to send back

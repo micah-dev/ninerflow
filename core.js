@@ -22,11 +22,8 @@ const commandHandler = async (msg) => {
     let args = msg.content.toLowerCase().trim().split(' ')
     args[0] = args[0].replace('!', '')
     if (!msg.content.startsWith('!')) return
-    console.log("1")
     if (msg.author.bot) return
-    console.log("2")
     if (!bot.commands.has(args[0])) return
-    console.log("3")
     try {
         bot.commands.get(args[0]).execute(msg, args, bot)
         console.log(`Exec: ${msg.content} success!`)

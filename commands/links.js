@@ -13,8 +13,8 @@ const Discord = require('discord.js');
  */
 module.exports = {
     name: 'resources',
-    usage: [],
-    description: '',
+    usage: 'resources',
+    description: 'Shows frequent links from MyUNCC',
     /**
     * The code the command executes when called
     */

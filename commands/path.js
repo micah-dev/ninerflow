@@ -51,9 +51,9 @@ module.exports = {
                 body = JSON.parse(body);
                 polyline=body.routes[0].overview_polyline.points
              //   console.log(polyline)
-                staticImageQueryParams=polyline+staticImageStyleQueryParams+"&maptype=hybrid&key="+GOOGLE_API_KEY
+                staticImageQueryParams=polyline+staticImageStyleQueryParams+"&maptype=hybrid&key="+secrets.GOOGLE_API_KEY
              //   console.log(staticImageQueryParams)
-                    
+                response=staticImageApiBaseUrl+staticImageQueryParams
                 msg.channel.send(response)
             });
         });

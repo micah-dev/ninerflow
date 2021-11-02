@@ -1,3 +1,6 @@
+*This file looks best in a markdown previewer such as GitHub!*  
+[*Show me on GitHub!*](https://github.com/micah-dev/ninerflow/blob/main/INSTRUCTIONS.md)  
+
 # NinerFlow
 
 NinerFlow is a UNCC campus intelligence tool designed for students, staff, and visitors. NinerFlow gives users the ability to find the shortest path between buildings, explore professor ratings, see local weather and more- all within Discord.

@@ -42,7 +42,7 @@ module.exports = {
             waitUntil: 'networkidle2',
             timeout: 30000,
         })
-        await delay(777)
+        await delay(1500)
         const element = await page.$('#block-block-55 > div > div');
         await element.screenshot({ path: tempPath })
 

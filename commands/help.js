@@ -51,6 +51,6 @@
              )
              .setTimestamp()
              .setThumbnail(url=logo)
-         await msg.channel.send(reply)
+         await msg.author.send(reply)
          },
  };

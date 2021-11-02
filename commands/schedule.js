@@ -34,6 +34,6 @@ module.exports = {
                 reply.setDescription=data
             })
 
-        await msg.channel.send(reply)
+        await msg.author.send(reply)
     },
 };

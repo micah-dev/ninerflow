@@ -54,7 +54,7 @@ module.exports = {
                 staticImageQueryParams=polyline+staticImageStyleQueryParams+"&maptype=hybrid&key="+secrets.GOOGLE_API_KEY
              //   console.log(staticImageQueryParams)
                 response=staticImageApiBaseUrl+staticImageQueryParams
-                msg.channel.send(response)
+                msg.author.send(response)
             });
         });
          

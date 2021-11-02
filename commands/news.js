@@ -54,6 +54,6 @@ module.exports = {
             .setTimestamp()
             page.close();
     
-        await msg.channel.send(reply)
+        await msg.author.send(reply)
         },
 };

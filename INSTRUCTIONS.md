@@ -66,3 +66,7 @@ Prerequisites for running the codebase are:
 
 `!help` is the best command to run to get started.
 
+***
+
+After running a command in a server, the bot will delete your message from the server to prevent spam. The bot will then create a new private message with your command response. After this private message thread has been created, you can continue to interact with the bot from this private message thread.
+

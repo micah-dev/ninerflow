@@ -12,8 +12,8 @@ const Discord = require('discord.js');
  * Command Parameters/Initialization 
  */
 module.exports = {
-    name: 'resources',
-    usage: 'resources',
+    name: 'links',
+    usage: 'links',
     description: 'Shows frequent links from MyUNCC',
     /**
     * The code the command executes when called

@@ -27,7 +27,6 @@ const commandHandler = async (msg) => {
     try {
         msg.delete()
         msg.author.send('```'+msg.content+'```')
-
         bot.commands.get(args[0]).execute(msg, args, bot)
         console.log(`Exec: ${msg.content} success!`)
     } catch (error) {

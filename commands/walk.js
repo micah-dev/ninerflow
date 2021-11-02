@@ -59,7 +59,7 @@ module.exports = {
 
                 const reply = new Discord.MessageEmbed()
                     .setColor('#008080')
-                    .setTitle(`${origin} to ${destination}`)
+                    .setTitle(`${origin} to ${destination} 🗺️`)
                     .setImage(response)
                     .setThumbnail(url = logo)
                     .setTimestamp()

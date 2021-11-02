@@ -4,9 +4,9 @@
 const {delay} = require("../util");
 const puppeteer = require('puppeteer');
 const Discord = require('discord.js');
- /**
-  * Local Variables
-  */
+/**
+ * Local Variables
+ */
 const tempFile = `help.png`
 const tempPath = `./commands/temp/${tempFile}`
 const lookupURL = ''

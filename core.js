@@ -6,7 +6,7 @@ const Discord = require('discord.js') // discord wrapper
 /**
  * Local imports
  */
-const secrets = require('./secrets.json')
+const secrets = require('./secrets.json');
 /**
  * Global Variables
  */
@@ -20,29 +20,36 @@ const secrets = require('./secrets.json')
  */
 
 const messageParser = (msg) => {
-    if (!msg.content.startsWith('!') || msg.author.bot)
+    let command = msg.content.replace("!", "").split(" ")[0]
+    let arguments = msg.content.replace(`${command}`, "").replace("!","")
+    if ((!msg.content.startsWith('!') & !(msg.channel instanceof Discord.DMChannel)) || msg.author.bot || !bot.commands.has(command))
         return false;
     else
         return {
-            command: msg.content.split(" ")[0].replace("!", ""),
-            arguments: msg.content.replace(`!${command} `, ""),
+            command: command.toLowerCase(),
+            arguments: arguments,
             author: msg.author,
             channel: msg.channel,
-            isDM: msg.channel instanceof DMChannel
+            isDM: msg.channel instanceof Discord.DMChannel
         }
-
 }
 const commandHandler = async (msg) => {
     let parsed = messageParser(msg)
-    if(!parsed) return
-    if(bot.commands.has(parsed.command.toLowerCase())) {
-        if(!parsed.isDM){
-            msg.delete()
-        }
-        command = bot.commands.get(parsed.command.toLowerCase())
-        command.execute().then(() => msg.author.send(""))
+    if (!parsed) return
+    if (!parsed.isDM) {
+        msg.delete()
     }
-    channel.stopTyping()
+    try {
+        msg.author.send("```" + `${parsed.command} ${parsed.arguments}` + "```")
+        channel = await msg.author.createDM().catch()
+        channel.startTyping()
+        command = bot.commands.get(parsed.command)
+        command.execute(msg, parsed.arguments, bot)
+            .then(() => { })
+        channel.stopTyping()
+    } catch (err) {
+        console.log(`Error while attempting ${parsed.command}\n${err}`)
+    }
 }
 /**
  * On Start 

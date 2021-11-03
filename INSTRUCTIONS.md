@@ -22,19 +22,9 @@ Prerequisites for running the codebase are:
 *The recommendation is to choose Option 1 for both sections*
 ***
 
-### How to download and run the code base.
+### How to download and run the code base:
 
 #### Option 1:
-1. Unzip the folder titled `NinerFlow_Submission` provided in the Canvas submission.
-2. Open the folder `ninerflow` in your preferred IDE.
-3. In the terminal, run the following commands:
-
-`npm install`  
-`npm install discord.js@12.5.3`  
-`npm fund`  
-`node core.js`  
-
-#### Option 2:
 1. Using [Git](https://git-scm.com/downloads), [Git for Windows](https://gitforwindows.org/) or [GitHub Desktop](https://desktop.github.com/), download the code repository from [here](https://github.com/micah-dev/ninerflow) or use the HTTPS clone: `git clone https://github.com/micah-dev/ninerflow.git`.
 2. Open the folder `ninerflow` in your preferred IDE.
 3. Add the file `secrets.json` to the project main hierarchy from the folder titled `if_using_git` from the Canvas Submission.
@@ -43,12 +33,20 @@ Prerequisites for running the codebase are:
 
 `npm install`  
 `npm install discord.js@12.5.3`  
-`npm fund`  
+`node core.js`
+
+#### Option 2:
+1. Unzip the folder titled `NinerFlow_Submission` provided in the Canvas submission.
+2. Open the folder `ninerflow` in your preferred IDE.
+3. In the terminal, run the following commands:
+
+`npm install`  
+`npm install discord.js@12.5.3`  
 `node core.js`  
 
 ***
 
-### How to use NinerFlow Discord bot.
+### How to use NinerFlow Discord bot:
 
 *The codebase must be running to use NinerFlow*
 
@@ -70,3 +68,39 @@ Prerequisites for running the codebase are:
 
 After running a command in a server, the bot will delete your message from the server to prevent spam. The bot will then create a new private message with your command response. After this private message thread has been created, you can continue to interact with the bot from this private message thread.
 
+### Available commands:
+
+**NOTES:**  
+* NinerFlow often replies with an embeded message containing an image.
+* This image is meant to be seen on mobile devices! If using NinerFlow on a desktop, simply click the `View on Web` link at the top of the message.
+* There are known issues with our current command handling protocol. If a warning appears in the terminal `Cannot execute action on a DM channel`, this is a known bug we are working to squash!
+* The `!walk` command can currently only be invoked from a server channel, *not* from a private message thread. This is a known bug we are working to squash!
+
+#### `!help`
+* Shows all available commands.
+* Ex: `!help`
+
+#### `!events`
+* Shows UNCC calendar events, or optionally more specific events.
+* Ex: `!events`
+* Ex: `!events rec`
+* Ex: `!events social`
+* Ex: `!events entertainment`
+* Ex: `!events info`
+
+#### `!weather`
+* Shows UNCC local weather.
+* Ex: `!weather`
+
+#### `!links`
+* Shows useful web resources from NinerNet.
+* Ex: `!links`
+
+#### `!food`
+* Shows nearby campus dining options.
+* Ex: `!food`
+
+#### `!walk a, b`
+* Shows the fasted walking path between two buildings a and b.
+* Ex: `!walk Epic, Burson`
+* Ex: `!walk Woodward Hall, Burson`

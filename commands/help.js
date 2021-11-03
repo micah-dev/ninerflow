@@ -51,6 +51,6 @@ module.exports = {
             )
             .setTimestamp()
             .setThumbnail(url = logo)
-        await msg.channel.send(reply)
+        return reply
     },
 };

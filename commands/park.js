@@ -36,7 +36,7 @@ module.exports = {
          *   copy>
          *   Selector Path>
          */
-        const browser = await puppeteer.launch({ headless: true})
+        const browser = await puppeteer.launch({ headless: true })
         const page = await browser.newPage()
         await page.goto(lookupURL, {
             waitUntil: 'networkidle2',
@@ -61,7 +61,7 @@ module.exports = {
             .setThumbnail(url = logo)
             .setTimestamp()
         page.close();
-        await msg.author.send(reply)
+        return reply
     },
 };
 

@@ -91,6 +91,6 @@ module.exports = {
             .setThumbnail(url = logo)
         page.close();
 
-        await msg.channel.send(reply)
+        return reply;
     },
 };

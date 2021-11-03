@@ -21,7 +21,8 @@ const secrets = require('./secrets.json');
 
 const messageParser = (msg) => {
     let command = msg.content.replace("!", "").split(" ")[0]
-    let arguments = msg.content.replace(`${command}`, "").replace("!","")
+    let arguments = msg.content.replace(`${command}`, "").replace("!", "")
+    // if the channel is not a DM ! is not needed, e
     if ((!msg.content.startsWith('!') & !(msg.channel instanceof Discord.DMChannel)) || msg.author.bot || !bot.commands.has(command))
         return false;
     else
@@ -44,8 +45,8 @@ const commandHandler = async (msg) => {
         channel = await msg.author.createDM().catch()
         channel.startTyping()
         command = bot.commands.get(parsed.command)
-        command.execute(msg, parsed.arguments, bot)
-            .then(() => { })
+        await command.execute(msg, parsed.arguments, bot)
+            .then(reply => msg.author.send(reply))
         channel.stopTyping()
     } catch (err) {
         console.log(`Error while attempting ${parsed.command}\n${err}`)

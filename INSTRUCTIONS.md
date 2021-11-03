@@ -66,14 +66,14 @@ Prerequisites for running the codebase are:
 
 ***
 
-After running a command in a server, the bot will delete your message from the server to prevent spam. The bot will then create a new private message with your command response. After this private message thread has been created, you can continue to interact with the bot from this private message thread.
+**As of 11/2/2012, an unknown bug has forced us to disable private messaging with the bot. We are working to squash this, but in the meantime the bot can only be invoked from a discord server channel.**
 
 ### Available commands:
 
 **NOTES:**  
 * NinerFlow often replies with an embeded message containing an image. This image is meant to be seen on mobile devices! If using NinerFlow on a desktop, simply click the `View on Web` link at the top of the message.
-* There are known issues with our current command handling protocol. If a warning appears in the terminal `Cannot execute action on a DM channel`, this is a known bug we are working to squash!
-* The `!walk` command can currently only be invoked from a server channel, *not* from a private message thread. This is a known bug we are working to squash!
+* The `!walk` command currently supports all buildings on campus (see `buildingdata.json`), however, some buildings cause the Google API to reply with a endpoint message longer than 2000 characters, which is unsupported and will cause the client to crash. This is a known bug we are working to squash!
+
 
 #### `!help`
 * Shows all available commands.

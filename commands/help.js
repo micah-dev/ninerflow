@@ -38,16 +38,16 @@ module.exports = {
             .addFields(
                 {name: '**!help**', value:"Shows all available commands." },
                 {name: '**!events or !events <REC/WORK/SOCIAL/ENTERTAINMENT/INFO>**', value:"Show trending and future events" },
-                {name: '**!bus**', value:"Show all bus routes." },
-                {name: '**!walk <a> <b>**', value:"Shows a map overlayed with the best path between <a> and <b>." },
-                {name: '**!prate <professor>**', value:"Shows the rating of <professorname> from ratemyprofessors.com." },
+                {name: '**!walk <a>, <b>**', value:"Shows the fastest walking path between <a> and <b>." },
                 {name: '**!weather **', value:"Shows the local weather forecast for UNCC." },
-                {name: '**!remind <classname> <time> <days>**', value:"Schedules a reminder for a class." },
-                {name: '**!resources**', value:"Show useful UNCC bookmarks." },
+                {name: '**!links**', value:"Show useful UNCC web resources." },
                 {name: '**!food**', value:"Shows the operating hours of campus dinning." },
                 {name: '**!news**', value:"Shows the Niner Times." },
-                {name: '**!todo <task> <date> <time>**', value:"Reminds user of a task at a given time," },
-                {name: '**!privacy <classname> <time> <days>**', value:"We don\'t want your data! You can find our privacy policy on our docs page." },
+                {name: '**!bus**', value:"[WIP]Show all bus routes." },
+                {name: '**!ratemy <professorname>**', value:"[WIP]Shows the rating of <professorname> from ratemyprofessors.com." },
+                {name: '**!classremind <classname> <time> <days>**', value:"[WIP]Reminds user of a class at a given time." },
+                {name: '**!taskremind <task> <date> <time>**', value:"[WIP]Reminds user of a task at a given time" },
+                {name: '**!schedule**', value:"[WIP]Shows a user their class schedule." },
             )
             .setTimestamp()
             .setThumbnail(url=logo)

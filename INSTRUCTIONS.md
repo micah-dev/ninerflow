@@ -27,7 +27,7 @@ Prerequisites for running the codebase are:
 #### Option 1:
 1. Using [Git](https://git-scm.com/downloads), [Git for Windows](https://gitforwindows.org/) or [GitHub Desktop](https://desktop.github.com/), download the code repository from [here](https://github.com/micah-dev/ninerflow) or use the HTTPS clone: `git clone https://github.com/micah-dev/ninerflow.git`.
 2. Open the folder `ninerflow` in your preferred IDE.
-3. From the folder titled `option1` in the zipped Canvas Submission folder, add the file `secrets.json` to the project main hierarchy.
+3. From the folder titled `option1` in the zipped Canvas submission folder, add the file `secrets.json` to the project main hierarchy.
 4. Create a new directory called `temp` under the directory `commands`.
 5. In the terminal, run the following commands:
 

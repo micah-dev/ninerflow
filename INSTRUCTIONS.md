@@ -72,7 +72,7 @@ Prerequisites for running the codebase are:
 
 **NOTES:**  
 * NinerFlow often replies with an embeded message containing an image. This image is meant to be seen on mobile devices! If using NinerFlow on a desktop, simply click the `View on Web` link at the top of the message.
-* The `!walk` command currently supports all buildings on campus (see `buildingdata.json`), however, some buildings cause the Google API to reply with a endpoint message longer than 2000 characters, which is unsupported and will cause the client to crash. This is a known bug we are working to squash!
+* The `!walk` command currently supports all buildings on campus (see `buildingdata.json`), however, some buildings cause the Google API to reply with an endpoint message longer than 2000 characters, which is unsupported and will cause the client to crash. This is a known bug we are working to squash!
 
 
 #### `!help`

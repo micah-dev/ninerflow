@@ -26,7 +26,7 @@ const messageParser = (msg) => {
         return false;
     else
         return {
-            command: command.toLowerCase(),
+            command: bot.commands.get(command),
             arguments: arguments,
             author: msg.author,
             channel: msg.channel,
@@ -40,11 +40,10 @@ const commandHandler = async (msg) => {
         msg.delete()
     }
     try {
-        msg.author.send("```" + `${parsed.command} ${parsed.arguments}` + "```")
-        channel = await msg.author.createDM().catch()
-        channel.startTyping()
-        command = bot.commands.get(parsed.command)
-        await command.execute(msg, parsed.arguments, bot)
+        let channel = await msg.author.createDM().catch()
+        msg.author.send("```" + `${parsed.command.name} ${parsed.arguments}` + "```")
+        channel.startTyping().then(() => {console.log(`Running Command: ${parsed.command.name} with args: ${parsed.arguments}`)})
+        await parsed.command.execute(msg, parsed.arguments, bot)
             .then(reply => msg.author.send(reply))
         channel.stopTyping()
     } catch (err) {

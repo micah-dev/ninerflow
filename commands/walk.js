@@ -55,7 +55,7 @@ module.exports = {
                 staticImageQueryParams = polyline + staticImageStyleQueryParams + "&maptype=hybrid&key=" + secrets.GOOGLE_API_KEY
                 //   console.log(staticImageQueryParams)
                 response = staticImageApiBaseUrl + staticImageQueryParams
-                //msg.author.send(response)
+                //msg.channel.send(response)
 
                 const reply = new Discord.MessageEmbed()
                     .setColor('#008080')
@@ -63,7 +63,7 @@ module.exports = {
                     .setImage(response)
                     .setThumbnail(url = logo)
                     .setTimestamp()
-                msg.author.send(reply)
+                msg.channel.send(reply)
             });
         });
 

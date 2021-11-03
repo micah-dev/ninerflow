@@ -84,13 +84,13 @@ module.exports = {
             .setColor('#008080')
             .setTitle(`🥂 ${title}`)
             .setThumbnail(url=logo)
-            .setDescription(`[View onß Web](${lookupURL})`)
+            .setDescription(`[View on Web](${lookupURL})`)
             .attachFiles(attachment)
             .setImage(`attachment://${tempFile}`)
             .setTimestamp()
             .setThumbnail(url=logo)
         page.close();
 
-        await msg.author.send(reply)
+        await msg.channel.send(reply)
     },
 };

@@ -57,6 +57,6 @@
              .setTimestamp()
              page.close();
      
-         await msg.author.send(reply)
+         await msg.channel.send(reply)
          },
  };

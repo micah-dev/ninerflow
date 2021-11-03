@@ -49,6 +49,6 @@ module.exports = {
              [More Links](https://www.uncc.edu/gateway/current-students)`)
             .setTimestamp()
             .setThumbnail(url=logo)
-        await msg.author.send(reply)
+        await msg.channel.send(reply)
     },
 };

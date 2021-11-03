@@ -22,7 +22,6 @@ const secrets = require('./secrets.json');
 const messageParser = (msg) => {
     let command = msg.content.replace("!", "").split(" ")[0]
     let arguments = msg.content.replace(`${command}`, "").replace("!", "")
-    // if the channel is not a DM ! is not needed, e
     if ((!msg.content.startsWith('!') & !(msg.channel instanceof Discord.DMChannel)) || msg.author.bot || !bot.commands.has(command))
         return false;
     else

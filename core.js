@@ -18,21 +18,31 @@ const secrets = require('./secrets.json')
  *      Try to execute the command
  *          Send Error to console & reply with error to channel
  */
+
+const messageParser = (msg) => {
+    if (!msg.content.startsWith('!') || msg.author.bot)
+        return false;
+    else
+        return {
+            command: msg.content.split(" ")[0].replace("!", ""),
+            arguments: msg.content.replace(`!${command} `, ""),
+            author: msg.author,
+            channel: msg.channel,
+            isDM: msg.channel instanceof DMChannel
+        }
+
+}
 const commandHandler = async (msg) => {
-    let args = msg.content.toLowerCase().trim().split(' ')
-    args[0] = args[0].replace('!', '')
-    if (!msg.content.startsWith('!')) return
-    if (msg.author.bot) return
-    if (!bot.commands.has(args[0])) return
-    try {
-        //msg.delete()
-        //msg.author.send('```'+msg.content+'```')
-        bot.commands.get(args[0]).execute(msg, args, bot)
-        console.log(`Exec: ${msg.content} success!`)
-    } catch (error) {
-        console.error(`${error} while doing command ${msg.content}`)
-        msg.reply(`${error} while doing command ${msg.content}`)
+    let parsed = messageParser(msg)
+    if(!parsed) return
+    if(bot.commands.has(parsed.command.toLowerCase())) {
+        if(!parsed.isDM){
+            msg.delete()
+        }
+        command = bot.commands.get(parsed.command.toLowerCase())
+        command.execute().then(() => msg.author.send(""))
     }
+    channel.stopTyping()
 }
 /**
  * On Start 

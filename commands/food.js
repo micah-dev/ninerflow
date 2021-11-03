@@ -54,7 +54,7 @@ module.exports = {
             .setImage(`attachment://${tempFile}`)
             .setDescription(`[View on Web](${lookupURL})`)
             .setTimestamp()
-            .setThumbnail(url=logo)
+            .setThumbnail(url = logo)
         page.close();
         await msg.channel.send(reply)
     },

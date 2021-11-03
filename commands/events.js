@@ -24,7 +24,7 @@ module.exports = {
     */
     execute: async (msg, args, bot) => {
         let selector = `#event_results`
-        let home =  `#tabs-19063-19065 > div`
+        let home = `#tabs-19063-19065 > div`
         let title = ``
         if (args[1] != null) {
             selector = `#event_results`
@@ -54,8 +54,8 @@ module.exports = {
                     selector = home
                     break;
             }
-        }else{
-            title= 'Trending Events'
+        } else {
+            title = 'Trending Events'
             selector = home
         }
         /**
@@ -83,12 +83,12 @@ module.exports = {
         const reply = new Discord.MessageEmbed()
             .setColor('#008080')
             .setTitle(`🥂 ${title}`)
-            .setThumbnail(url=logo)
+            .setThumbnail(url = logo)
             .setDescription(`[View on Web](${lookupURL})`)
             .attachFiles(attachment)
             .setImage(`attachment://${tempFile}`)
             .setTimestamp()
-            .setThumbnail(url=logo)
+            .setThumbnail(url = logo)
         page.close();
 
         await msg.channel.send(reply)

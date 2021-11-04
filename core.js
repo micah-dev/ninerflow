@@ -6,7 +6,7 @@ const Discord = require('discord.js') // discord wrapper
 /**
  * Local imports
  */
-const secrets = require('./secrets.json')
+const secrets = require('./secrets.json');
 /**
  * Global Variables
  */
@@ -18,20 +18,37 @@ const secrets = require('./secrets.json')
  *      Try to execute the command
  *          Send Error to console & reply with error to channel
  */
+
+const messageParser = (msg) => {
+    let command = msg.content.replace("!", "").split(" ")[0]
+    let arguments = msg.content.replace(`${command}`, "").replace("!", "")
+    if ((!msg.content.startsWith('!') & !(msg.channel instanceof Discord.DMChannel)) || msg.author.bot || !bot.commands.has(command))
+        return false;
+    else
+        return {
+            command: command.toLowerCase(),
+            arguments: arguments,
+            author: msg.author,
+            channel: msg.channel,
+            isDM: msg.channel instanceof Discord.DMChannel
+        }
+}
 const commandHandler = async (msg) => {
-    let args = msg.content.toLowerCase().trim().split(' ')
-    args[0] = args[0].replace('!', '')
-    if (!msg.content.startsWith('!')) return
-    if (msg.author.bot) return
-    if (!bot.commands.has(args[0])) return
+    let parsed = messageParser(msg)
+    if (!parsed) return
+    if (!parsed.isDM) {
+        msg.delete()
+    }
     try {
-        //msg.delete()
-        //msg.author.send('```'+msg.content+'```')
-        bot.commands.get(args[0]).execute(msg, args, bot)
-        console.log(`Exec: ${msg.content} success!`)
-    } catch (error) {
-        console.error(`${error} while doing command ${msg.content}`)
-        msg.reply(`${error} while doing command ${msg.content}`)
+        msg.author.send("```" + `${parsed.command} ${parsed.arguments}` + "```")
+        channel = await msg.author.createDM().catch()
+        channel.startTyping()
+        command = bot.commands.get(parsed.command)
+        await command.execute(msg, parsed.arguments, bot)
+            .then(reply => msg.author.send(reply))
+        channel.stopTyping()
+    } catch (err) {
+        console.log(`Error while attempting ${parsed.command}\n${err}`)
     }
 }
 /**

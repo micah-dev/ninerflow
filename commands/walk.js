@@ -63,7 +63,7 @@ module.exports = {
                     .setImage(response)
                     .setThumbnail(url = logo)
                     .setTimestamp()
-                msg.channel.send(reply)
+                return reply
             });
         });
 

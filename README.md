@@ -67,6 +67,8 @@ Prerequisites for running the codebase are:
 ***
 
 **As of 11/2/2012, an unknown bug has forced us to disable private messaging with the bot. We are working to squash this, but in the meantime the bot can only be invoked from a discord server channel.**
+*UPDATE: FIXED*
+**Ninerflow should now reply to your command in a server in a private message as expected.**
 
 ### Available commands:
 

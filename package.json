@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.24.0",
     "discord.js": "^12.5.3",
     "openai": "^0.0.8",
     "openai-api-node": "^1.0.0",

@@ -44,11 +44,12 @@ const commandHandler = async (msg) => {
         channel = await msg.author.createDM().catch()
         channel.startTyping()
         command = bot.commands.get(parsed.command)
-        await command.execute(msg, parsed.arguments, bot)
-            .then(reply => msg.author.send(reply))
-        channel.stopTyping()
+        let commandResponse = await command.execute(msg, parsed.arguments, bot)
+        msg.author.send(commandResponse)
     } catch (err) {
         console.log(`Error while attempting ${parsed.command}\n${err}`)
+    } finally {
+      channel.stopTyping()
     }
 }
 /**

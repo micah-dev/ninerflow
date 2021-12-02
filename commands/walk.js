@@ -58,12 +58,21 @@ module.exports = {
         "&maptype=hybrid&key=" +
         secrets.GOOGLE_API_KEY;
       commandResponse = staticImageApiBaseUrl + staticImageQueryParams;
-      const reply = new Discord.MessageEmbed()
-        .setColor("#008080")
-        .setTitle(`Walking Route`)
-        .setDescription(`[View on Web](${commandResponse})`)
-        .setImage(commandResponse)
-        .setThumbnail((url = logo));
+      let reply;
+      if(commandResponse.length >2000){
+      reply = new Discord.MessageEmbed()
+              .setColor("#008080")
+              .setTitle(`Error annotating walking path, please try another set of buildings.`)
+              .setThumbnail((url = logo));
+            }
+      else{
+            reply = new Discord.MessageEmbed()
+              .setColor("#008080")
+              .setTitle(`Walking Route`)
+              .setDescription(`[View on Web](${commandResponse})`)
+              .setImage(commandResponse)
+              .setThumbnail((url = logo));
+      }
 
       return reply;
     } catch (error) {

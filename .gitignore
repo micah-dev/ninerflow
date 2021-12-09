@@ -4,3 +4,5 @@ secrets.json
 
 commands/temp/*
 !commands/temp/.gitkeep
+
+.DS_Store

@@ -1,35 +1,68 @@
-/**
- * Libraries/Imports
- */
-const { delay } = require("../util");
 const puppeteer = require('puppeteer');
 const Discord = require('discord.js');
-/**
- * Local Variables
- */
-const logo = 'https://media.discordapp.net/attachments/886347148386529291/894761080348368966/bot_logo-white_on_transparent-06.png?width=850&height=858'
+
 const tempFile = `events.png`
 const tempPath = `./commands/temp/${tempFile}`
-let lookupURL = 'https://campusevents.uncc.edu'
+const logo = 'https://media.discordapp.net/attachments/886347148386529291/894761080348368966/bot_logo-white_on_transparent-06.png?width=850&height=858'
 
-/**
- * Command Parameters/Initialization 
- */
+
 module.exports = {
     name: 'events',
-    usage: [],
-    description: '',
-    /**
-    * The code the command executes when called
-    */
-    execute: async (msg, args, bot) => {
+    category: 'Sprint 2',
+    description: 'Shows UNCC events.',
+    guildOnly: true,
+
+    slash: true,
+    testOnly: true,
+
+    //expectedArgs: '[category]',
+    //maxArgs: 1,
+
+    options: [
+        {
+            name: 'category',
+            description: 'Optionally get news by category.',
+            type: 3,
+            required: false,
+            choices: [
+                {
+                    name: 'recreation',
+                    value: 'recreation',
+                },
+                {
+                    name: 'work',
+                    value: 'work',
+                },
+                {
+                    name: 'social',
+                    value: 'social',
+                },
+                {
+                    name: 'entertainment',
+                    value: 'entertainment',
+                },
+                {
+                    name: 'info',
+                    value: 'info',
+                },
+            ]
+        }
+    ],
+
+    callback: async ({ interaction, args }) => {
+        
+        if (!(interaction.commandName === 'events')) return
+
+        await interaction.deferReply({ ephemeral: true })
         let selector = `#event_results`
         let home = `#tabs-19063-19065 > div`
         let title = ``
-        if (args[1] != null) {
+        let lookupURL = ``
+
+        if (args[0] != null) {
             selector = `#event_results`
-            switch (args[1]) {
-                case 'rec':
+            switch (args[0]) {
+                case 'recreation':
                     title = "Sports & Recreational"
                     lookupURL = `https://campusevents.uncc.edu/calendar?event_types%5B%5D=30511197162301` //#event_results
                     break;
@@ -54,43 +87,37 @@ module.exports = {
                     selector = home
                     break;
             }
-        } else {
+        } else { //No args case
+            lookupURL = 'https://campusevents.uncc.edu'
             title = 'Trending Events'
             selector = home
         }
-        /**
-        * Using puppeteer to setup browser and screenshot page then save it
-        * 
-        * To find a page element: 
-        *   Click Object on page
-        *   Inspect Element
-        *   Click HTML for object
-        *   copy>
-        *   Selector Path>
-        */
         const browser = await puppeteer.launch()
         const page = await browser.newPage()
         await page.goto(lookupURL)
         const element = await page.$(selector);
-        delay(500);
         await element.screenshot({ path: tempPath })
-        /**
-        * Using the discord library to make embedded message to send back
-        */
-        const attachment = new Discord
-            .MessageAttachment(tempPath, tempFile);
 
-        const reply = new Discord.MessageEmbed()
-            .setColor('#008080')
-            .setTitle(`🥂 ${title}`)
-            .setThumbnail(url = logo)
-            .setDescription(`[View on Web](${lookupURL})`)
-            .attachFiles(attachment)
+        const attachment = new Discord.MessageAttachment(`./commands/temp/${tempFile}`);
+        const embed = new Discord.MessageEmbed()
+            .setColor('RED')
+            .setTitle(`${title} 🎪`)
             .setImage(`attachment://${tempFile}`)
             .setTimestamp()
-            .setThumbnail(url = logo)
-        page.close();
 
-        return reply;
-    },
-};
+        const button = new Discord.MessageActionRow()
+            .addComponents(
+                new Discord.MessageButton()
+                    .setURL(`${lookupURL}`)
+                    .setLabel('View on Web')
+                    .setStyle('LINK')
+            )
+
+        interaction.editReply({
+            //ephemeral: true,
+            embeds: [embed],
+            files: [attachment],
+            components: [button],
+        })
+    }
+}

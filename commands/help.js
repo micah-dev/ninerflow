@@ -1,56 +1,87 @@
-/**
- * Libraries/Imports
- */
-const { delay } = require("../util");
-const puppeteer = require('puppeteer');
-const Discord = require('discord.js');
-/**
- * Local Variables
- */
-const tempFile = `help.png`
-const tempPath = `./commands/temp/${tempFile}`
-const lookupURL = ''
+// TODO: Migrate this to BUTTONS (maybe)
+
+const Discord = require('discord.js')
 const logo = 'https://media.discordapp.net/attachments/886347148386529291/894761080348368966/bot_logo-white_on_transparent-06.png?width=850&height=858'
 
-/**
-  * Command Parameters/Initialization 
-  */
 module.exports = {
     name: 'help',
-    usage: [],
-    description: '',
-    /**
-     * The code the command executes when called
-     */
-    execute: async (msg, args, bot) => {
+    category: 'Sprint 2',
+    description: 'Shows the NinerFlow help menu.',
+    guildOnly: true,
 
+    slash: true,
+    testOnly: true,
 
-        /**
-         * Using the discord library to make embedded message to send back
-         */
-        const attachment = new Discord
-            .MessageAttachment(tempPath, tempFile);
+    // TODO: seperate help menu by cmd category
 
-        const reply = new Discord.MessageEmbed()
+    callback: async ({ interaction, instance }) => {
+        
+        const embed = new Discord.MessageEmbed()
             .setColor('#008080')
             .setTitle(`Need some help? 👋🏽`)
-            .setDescription(`'Below is all available commands. For more information, visit [NinerFlow docs](https://github.com/micah-dev/ninerflow).'`)
-            .addFields(
-                { name: '**!help**', value: "Shows all available commands." },
-                { name: '**!events or !events <REC/WORK/SOCIAL/ENTERTAINMENT/INFO>**', value: "Show trending and future events" },
-                { name: '**!walk <a>, <b>**', value: "Shows the fastest walking path between <a> and <b>." },
-                { name: '**!weather **', value: "Shows the local weather forecast for UNCC." },
-                { name: '**!links**', value: "Show useful UNCC web resources." },
-                { name: '**!food**', value: "Shows the operating hours of campus dinning." },
-                { name: '**!news**', value: "Shows the Niner Times." },
-                { name: '**!bus**', value: "[WIP]Show all bus routes." },
-                { name: '**!ratemy <professorname>**', value: "[WIP]Shows the rating of <professorname> from ratemyprofessors.com." },
-                { name: '**!classremind <classname> <time> <days>**', value: "[WIP]Reminds user of a class at a given time." },
-                { name: '**!taskremind <task> <date> <time>**', value: "[WIP]Reminds user of a task at a given time" },
-                { name: '**!schedule**', value: "[WIP]Shows a user their class schedule." },
-            )
-            .setTimestamp()
-            .setThumbnail(url = logo)
-        return reply
-    },
-};
+            .setDescription(`Below is all available commands. For more information, visit the NinerFlow [docs](https://github.com/micah-dev/ninerflow).\n\n`)
+            //.setTimestamp()
+        
+        sprint_2 = []
+        sprint_3 = []
+        sprint_4 = []
+        
+        instance.commandHandler.commands.forEach((command) => {
+            
+            //console.log(command.category)
+            if(command.category == 'Testing' || command.category == 'Configuration') return
+
+            if (command.category == 'Sprint 2') {
+                sprint_2.push(command)
+            }
+
+            if (command.category == 'Sprint 3') {
+                sprint_3.push(command)
+            }
+
+            if (command.category == 'Sprint 4') {
+                sprint_4.push(command)
+            }
+            
+            
+        })
+
+        embed.addField("**Sprint 2**", "---------------------------------\n")
+        sprint_2.forEach((command) => {
+            //console.log(command)
+            cmd = `/${command.names[0]} ${command.syntax}`
+            cmd_format = "`"
+            field = cmd_format + cmd + cmd_format
+            
+            embed.addField(field, command.description)
+        })
+
+        embed.addField("**Sprint 3**", "---------------------------------\n")
+        sprint_3.forEach((command) => {
+            //console.log(command)
+            cmd = `/${command.names[0]} ${command.syntax}`
+            cmd_format = "`"
+            field = cmd_format + cmd + cmd_format
+            
+            embed.addField(field, command.description)
+        })
+
+        embed.addField("**Sprint 4**", "---------------------------------\n")
+        sprint_4.forEach((command) => {
+            //console.log(command)
+            cmd = `/${command.names[0]} ${command.syntax}`
+            cmd_format = "`"
+            field = cmd_format + cmd + cmd_format
+            
+            embed.addField(field, command.description)
+        })
+
+        // Send the response
+        interaction?.reply({
+            ephemeral: true,
+            embeds: [embed]
+        })
+
+
+    }
+}

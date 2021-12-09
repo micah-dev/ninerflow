@@ -202,7 +202,7 @@ module.exports = {
     category: 'Sprint 3',
     guildOnly: true,
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     name: 'class',
     description: 'View your classes and get class reminders.',

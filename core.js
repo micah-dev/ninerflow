@@ -19,7 +19,7 @@ client.on('ready', async () => {
         // The name of the local folder for your command files
         commandsDir: path.join(__dirname, 'commands'),
         // What guilds your slash commands will be created in
-        testServers: ['529033279421153301', '880879298536431676'],
+        testServers: ['880879298536431676'],
         botOwners: ['318257467446525952', '508066183598047232'],
         // If interactions should only be shown to the one user.
         //ephemeral: true,

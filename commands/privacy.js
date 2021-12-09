@@ -5,7 +5,7 @@ module.exports = {
     category: 'Sprint 4',
     guildOnly: true,
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     name: 'privacy',
     description: `View NinerFlow's privacy policy.`,

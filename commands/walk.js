@@ -17,7 +17,7 @@ module.exports = {
     guildOnly: true,
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     // Arguments
     expectedArgs: '<origin> <destination>',

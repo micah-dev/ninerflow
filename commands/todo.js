@@ -198,7 +198,7 @@ module.exports = {
     category: 'Sprint 3',
     guildOnly: true,
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     name: 'todo',
     description: 'Create a todo list and get task reminders!',

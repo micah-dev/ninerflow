@@ -14,7 +14,7 @@ module.exports = {
     description: 'Shows UNCC on-campus dining options.',
     guildOnly: true,
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     callback: async ({ interaction }) => {
         await interaction.deferReply({ ephemeral: true })

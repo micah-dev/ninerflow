@@ -14,7 +14,7 @@ module.exports = {
     guildOnly: true,
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     callback: async ({ interaction }) => {
 

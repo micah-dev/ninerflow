@@ -15,7 +15,7 @@ module.exports = {
     description: `View a professor's RateMyProfessor profile.`,
     guildOnly: true,
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     // Arguments
     expectedArgs: "<Professor Name>",

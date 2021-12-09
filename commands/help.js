@@ -10,7 +10,7 @@ module.exports = {
     guildOnly: true,
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     // TODO: seperate help menu by cmd category
 

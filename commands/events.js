@@ -13,7 +13,7 @@ module.exports = {
     guildOnly: true,
 
     slash: true,
-    testOnly: true,
+    //testOnly: true,
 
     //expectedArgs: '[category]',
     //maxArgs: 1,

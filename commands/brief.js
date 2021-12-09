@@ -197,7 +197,12 @@ async function sendBrief(instance, user_id, user_name, interaction, brief_item_c
     let class_item_collection = instance.mongoConnection.models['class_item']
     let todo_item_collection = instance.mongoConnection.models['todo_item']
 
-    interaction.reply("**Here is your brief:**")
+    //interaction.reply("**Here is your brief:**")
+    interaction?.reply({
+        ephemeral: true,
+        custom: true,
+        content: "**Here is your brief:**",
+    })
 
     if (enable_class) {
         listClasses(user_id, interaction, class_item_collection)

@@ -43,18 +43,19 @@ Prerequisites for running the codebase are:
 *The codebase must be running to use NinerFlow*
 
 #### Option 1:
+1. Join our test server to use the bot. Here is an [invitation](https://discord.gg/5pBcFdnCbu).
+2. Navigate to a server channel.
+3. Run NinerFlow commands:
+
+`/help` is the best command to run to get started.
+
+#### Option 2:
 1. Invite the Discord bot to a server you have admin/mod privileges in using this [link](https://discord.com/api/oauth2/authorize?client_id=895754091324665908&permissions=8&scope=bot%20applications.commands). In the server's *members* tab, you should now see `NinerFlow` as a member.
 2. Navigate to a text channel.
 3. Run NinerFlow commands:
 
 `/help` is the best command to run to get started.
 
-#### Option 2:
-1. Join our test server to use the bot. Here is an [invitation](https://discord.gg/5pBcFdnCbu).
-2. Navigate to a server channel.
-3. Run NinerFlow commands:
-
-`/help` is the best command to run to get started.
 
 ***
 

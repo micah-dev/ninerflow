@@ -25,9 +25,6 @@ NinerFlow is a UNCC campus intelligence tool designed for students, staff, and v
 * Shows all available commands and basic usage.
 * Ex: `/help`
 
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="400"/>
-
-
 ---
 #### `/events`
 * Shows UNCC calendar events, or optionally more specific events.
